@@ -1,0 +1,5 @@
+jpa_mysql/entidades/Libro_.java
+jpa_mysql/entidades/Editorial_.java
+jpa_mysql/entidades/Autor_.java
+jpa_mysql/entidades/Prestamo_.java
+jpa_mysql/entidades/Cliente_.java
