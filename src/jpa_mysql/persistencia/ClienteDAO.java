@@ -11,42 +11,66 @@ import jpa_mysql.entidades.Cliente;
  *
  * @author Max
  */
-public class ClienteDAO extends DAO<Cliente>{
-    
+public class ClienteDAO extends DAO<Cliente> {
+
     @Override
-    public void guardar(Cliente cliente){
+    public void guardar(Cliente cliente) {
         super.guardar(cliente);
     }
-    
+
     public Cliente buscarClientePorID(Long id){
-        conectar();
-        Cliente cliente = em.find(Cliente.class, id);
-        desconectar();
-        return cliente;
+        try {
+            if (id.toString().trim().isEmpty()) {
+                System.out.println("Debe ingresar un id valido");
+                return null;
+            }
+            conectar();
+            Cliente cliente = em.find(Cliente.class, id);
+            desconectar();
+            return cliente;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
-    
+
     public Cliente buscarClientePorDni(Long dni){
-        conectar();
-        Cliente cliente = em.find(Cliente.class, dni);
-        desconectar();
-        return cliente;
+        try {
+            if (dni.toString().trim().isEmpty()) {
+                System.out.println("Debe ingresar un documento valido");
+                return null;
+            }
+            if (dni.toString().length() < 8) {
+                System.out.println("El documento ingresado no es correcto");
+                return null;
+            }
+            conectar();
+            Cliente cliente = em.find(Cliente.class, dni);
+            desconectar();
+            return cliente;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
-    
-    public List<Cliente> mostrarClientes(){
+
+    public List<Cliente> mostrarClientes() {
         conectar();
         List<Cliente> clientes = em.createQuery("SELECT c FROM Cliente c").getResultList();
         desconectar();
         return clientes;
     }
-    
+
     @Override
-    public void editar(Cliente cliente){
+    public void editar(Cliente cliente) {
         super.editar(cliente);
     }
-    
+
     @Override
-    public void eliminar(Cliente cliente){
+    public void eliminar(Cliente cliente) {
         super.eliminar(cliente);
     }
-    
+
 }

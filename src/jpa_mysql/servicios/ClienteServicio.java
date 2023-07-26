@@ -45,4 +45,20 @@ public class ClienteServicio {
         return cdao.mostrarClientes();
     }
     
+    public Cliente buscarClientePorDNI(Long dni) throws Exception{
+        return cdao.buscarClientePorDni(dni);
+    }
+    
+    public Cliente buscarClientePorID(Long id) throws Exception{
+        return cdao.buscarClientePorID(id);
+    }
+    
+    public void modificarCliente(Cliente cliente){
+        cdao.editar(cliente);
+    }
+    
+    public void eliminarCliente(Cliente cliente){
+        cdao.eliminar(cliente);
+    }
+    
 }

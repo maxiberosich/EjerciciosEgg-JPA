@@ -55,7 +55,7 @@ public class MenuLibro {
             System.out.println(" 1- Mostrar todos los libros existentes"
                     + "\n 2- Buscar libro por ISBN" + "\n 3- Buscar libros por editorial"
                     + "\n 4- Buscar libros por autor" + "\n 5- Buscar libro por titulo"
-                    + "\n 6- Volver al menu principal");
+                    + "\n 0- Volver al menu principal");
             opcM = leer.nextByte();
             switch (opcM) {
                 case 1:
@@ -86,7 +86,7 @@ public class MenuLibro {
                 default:
                     System.out.println("Seleccione una opcion correcta");
             }
-        } while (opcM <= 5);
+        } while (opcM != 0);
     }
 
     private void modificacion() {

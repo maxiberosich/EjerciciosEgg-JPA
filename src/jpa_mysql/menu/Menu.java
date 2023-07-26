@@ -4,6 +4,7 @@
  */
 package jpa_mysql.menu;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -14,7 +15,8 @@ public class Menu {
 
     private final Scanner leer = new Scanner(System.in, "ISO-8859-1").useDelimiter("\n");
 
-    public void ejecucion() {       
+    public void ejecucion() throws Exception {    
+        try{
             int opcionMenu;
             do {
                 System.out.println("Seleccione el menu que desee ingresar: \n 1- Autor \n 2- Editorial"
@@ -45,6 +47,9 @@ public class Menu {
                     }
                 }
             } while (opcionMenu != 0);
+        } catch (InputMismatchException e) {
+                        System.out.println("Debe ingresar un numero valido\n\n");
+        }    
     }
 
 }

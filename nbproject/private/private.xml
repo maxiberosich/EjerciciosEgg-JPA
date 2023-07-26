@@ -3,15 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_EJ/src/jpa_ej/menu/MenuLibro.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_EJ/src/jpa_ej/menu/Menu.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_EJ/src/jpa_ej/servicios/ClienteServicio.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_EJ/src/jpa_ej/menu/MenuPrestamo.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_EJ/src/jpa_ej/servicios/AutorServicio.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_EJ/src/jpa_ej/menu/MenuCliente.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_EJ/src/jpa_ej/menu/MenuEditorial.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_EJ/src/jpa_ej/JPA_EJ.java</file>
-            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_EJ/src/jpa_ej/menu/MenuAutor.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/servicios/AutorServicio.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/JPA_MYSQL.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/persistencia/AutorDAO.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/menu/Menu.java</file>
         </group>
     </open-files>
 </project-private>
