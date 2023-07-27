@@ -6,8 +6,6 @@ package jpa_mysql.entidades;
 
 import com.sun.istack.internal.NotNull;
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

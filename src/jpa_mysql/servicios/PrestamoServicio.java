@@ -4,7 +4,9 @@
  */
 package jpa_mysql.servicios;
 
+import java.util.Date;
 import java.util.List;
+import jpa_mysql.entidades.Cliente;
 import jpa_mysql.entidades.Prestamo;
 import jpa_mysql.persistencia.PrestamoDAO;
 
@@ -26,6 +28,18 @@ public class PrestamoServicio {
     
     public List<Prestamo> mostrarPrestamos(){
         return pdao.mostrarPrestamos();
+    }
+    
+    public Prestamo buscarPrestamoPorID(Long id){
+        return pdao.buscarPrestamoPorID(id);
+    }
+    
+    public List<Prestamo> buscarPrestamosPorFecha(Date fecha){
+        return pdao.buscarPrestamosPorFecha(fecha);
+    }
+    
+    public Prestamo buscarPrestamoPorCliente(Cliente cliente){
+        return pdao.buscarPrestamoPorCliente(cliente);
     }
     
 }

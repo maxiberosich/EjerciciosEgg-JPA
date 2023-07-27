@@ -4,8 +4,9 @@
  */
 package jpa_mysql.persistencia;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import jpa_mysql.entidades.Cliente;
 import jpa_mysql.entidades.Prestamo;
 
 /**
@@ -24,6 +25,36 @@ public class PrestamoDAO extends DAO<Prestamo> {
         List<Prestamo> prestamos = em.createQuery("SELECT p FROM Prestamo p").getResultList();
         desconectar();
         return prestamos;
+    }
+    
+    public List<Prestamo> buscarPrestamosPorFecha(Date fecha) {
+        conectar();
+        String jpql = "SELECT p FROM Prestamo p"
+                + " WHERE p.fechaPrestamo = :fecha";
+        List<Prestamo> prestamos = em.createQuery(jpql, Prestamo.class).
+                setParameter("fecha", fecha)
+                .getResultList();
+        desconectar();
+        return prestamos;
+    }
+    
+    public Prestamo buscarPrestamoPorID(Long id){
+        conectar();
+        Prestamo p = em.find(Prestamo.class, id);
+        desconectar();
+        return p;
+    }
+    
+    public Prestamo buscarPrestamoPorCliente(Cliente cliente){
+        conectar();
+        String jpql = "SELECT p FROM Prestamo p"
+                + " WHERE p.cliente = :cliente";
+        Prestamo p = (Prestamo) em.createQuery(jpql,Prestamo.class).
+                setParameter("cliente", cliente).
+                getSingleResult();
+        desconectar();
+
+        return p;
     }
 
 }
