@@ -3,10 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/persistencia/PrestamoDAO.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/entidades/Cliente.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/servicios/AutorServicio.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/menu/MenuCliente.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/persistencia/ClienteDAO.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/menu/MenuLibro.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/JPA_MYSQL.java</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/persistencia/AutorDAO.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/servicios/ClienteServicio.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/META-INF/persistence.xml</file>
             <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/menu/Menu.java</file>
+            <file>file:/C:/Users/Usuario/Documents/NetBeansProjects/JPA_MYSQL/src/jpa_mysql/persistencia/DAO.java</file>
         </group>
     </open-files>
 </project-private>

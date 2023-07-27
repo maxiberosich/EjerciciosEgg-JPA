@@ -6,6 +6,8 @@ package jpa_mysql.entidades;
 
 import com.sun.istack.internal.NotNull;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,21 +48,13 @@ public class Prestamo implements Serializable {
     public Prestamo() {
     }
 
-    public Prestamo(Long id, Date fechaPrestamo, Date fechaDevolucion, Libro libro, Cliente cliente) {
-        this.id = id;
-        this.fechaPrestamo = fechaPrestamo;
-        this.fechaDevolucion = fechaDevolucion;
-        this.libro = libro;
-        this.cliente = cliente;
-    }
-
     public Prestamo(Date fechaPrestamo, Date fechaDevolucion, Libro libro, Cliente cliente) {
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
         this.libro = libro;
         this.cliente = cliente;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -83,7 +77,7 @@ public class Prestamo implements Serializable {
 
     public void setFechaDevolucion(Date fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
-    }
+    }      
 
     public Libro getLibro() {
         return libro;
@@ -99,7 +93,7 @@ public class Prestamo implements Serializable {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
+    }    
     
     @Override
     public int hashCode() {
@@ -124,6 +118,6 @@ public class Prestamo implements Serializable {
     @Override
     public String toString() {
         return "Prestamo{" + "id=" + id + ", fechaPrestamo=" + fechaPrestamo + ", fechaDevolucion=" + fechaDevolucion + ", libro=" + libro + ", cliente=" + cliente + '}';
-    }
+    }    
     
 }

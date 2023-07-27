@@ -4,10 +4,28 @@
  */
 package jpa_mysql.servicios;
 
+import java.util.List;
+import jpa_mysql.entidades.Prestamo;
+import jpa_mysql.persistencia.PrestamoDAO;
+
 /**
  *
  * @author Max
  */
 public class PrestamoServicio {
+    
+    private final PrestamoDAO pdao;
+
+    public PrestamoServicio() {
+        this.pdao = new PrestamoDAO();
+    }
+    
+    public void cargarPrestamo(Prestamo prestamo){
+        pdao.guardar(prestamo);
+    }
+    
+    public List<Prestamo> mostrarPrestamos(){
+        return pdao.mostrarPrestamos();
+    }
     
 }
