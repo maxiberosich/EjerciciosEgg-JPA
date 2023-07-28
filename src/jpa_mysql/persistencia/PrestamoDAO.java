@@ -61,5 +61,10 @@ public class PrestamoDAO extends DAO<Prestamo> {
     public void editar(Prestamo prestamo){
         super.editar(prestamo);
     }
+    
+    @Override
+    public void eliminar(Prestamo prestamo){
+        super.eliminar(prestamo);
+    }
 
 }

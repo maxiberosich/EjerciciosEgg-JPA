@@ -40,6 +40,7 @@ public class MenuPrestamo {
                     + "\n 2- Mostrar prestamos"
                     + "\n 3- Buscar prestamo"
                     + "\n 4- Modificar prestamo"
+                    + "\n 5- Eliminar prestamo"
                     + "\n 0- Volver al menu principal");
             opcPrestamo = leer.nextByte();
             switch (opcPrestamo) {
@@ -56,6 +57,9 @@ public class MenuPrestamo {
                     break;
                 case 4:
                     modificarPrestamo();
+                    break;
+                case 5:
+                    eliminarPrestamo();
                     break;
             }
         } while (opcPrestamo != 0);
@@ -186,7 +190,7 @@ public class MenuPrestamo {
         } while (opcPres != 0);
     }
 
-    private Prestamo buscarPrestamoAModificar() throws Exception {
+    private Prestamo buscarPrestamoAModificarEliminar() throws Exception {
         int opcPres;
         Prestamo prestamo = null;
         System.out.println("Seleccione la opcion para buscar el prestamo que desea modificar:"
@@ -242,7 +246,7 @@ public class MenuPrestamo {
 
     private void modificarPrestamo() throws Exception {
         int opcModificar;
-        Prestamo p = buscarPrestamoAModificar();
+        Prestamo p = buscarPrestamoAModificarEliminar();
         System.out.println("Seleccione la modificacion a realizar:"
                 + "\n1- Modificar todo el prestamo"
                 + "\n2- Modificar fecha de prestamo"
@@ -391,6 +395,13 @@ public class MenuPrestamo {
                 break;
         }
         ps.modificarPrestamo(p);
+        System.out.println("Prestamo modificado correctamente.");
+    }
+    
+    private void eliminarPrestamo() throws Exception{
+        Prestamo p = buscarPrestamoAModificarEliminar();
+        ps.eliminarPrestamo(p);
+        System.out.println("Prestamo eliminado exitosamente.");
     }
 
 }

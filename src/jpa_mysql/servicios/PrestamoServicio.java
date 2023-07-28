@@ -46,4 +46,8 @@ public class PrestamoServicio {
         pdao.editar(prestamo);
     }
     
+    public void eliminarPrestamo(Prestamo prestamo){
+        pdao.eliminar(prestamo);
+    }
+    
 }
