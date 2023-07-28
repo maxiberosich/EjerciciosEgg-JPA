@@ -56,5 +56,10 @@ public class PrestamoDAO extends DAO<Prestamo> {
 
         return p;
     }
+    
+    @Override
+    public void editar(Prestamo prestamo){
+        super.editar(prestamo);
+    }
 
 }

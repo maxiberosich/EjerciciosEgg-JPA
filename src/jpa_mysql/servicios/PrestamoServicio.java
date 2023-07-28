@@ -42,4 +42,8 @@ public class PrestamoServicio {
         return pdao.buscarPrestamoPorCliente(cliente);
     }
     
+    public void modificarPrestamo(Prestamo prestamo){
+        pdao.editar(prestamo);
+    }
+    
 }

@@ -39,6 +39,7 @@ public class MenuPrestamo {
                     + "\n 1- Cargar prestamo nuevo"
                     + "\n 2- Mostrar prestamos"
                     + "\n 3- Buscar prestamo"
+                    + "\n 4- Modificar prestamo"
                     + "\n 0- Volver al menu principal");
             opcPrestamo = leer.nextByte();
             switch (opcPrestamo) {
@@ -52,6 +53,9 @@ public class MenuPrestamo {
                     break;
                 case 3:
                     buscarPrestamo();
+                    break;
+                case 4:
+                    modificarPrestamo();
                     break;
             }
         } while (opcPrestamo != 0);
@@ -134,8 +138,8 @@ public class MenuPrestamo {
                     System.out.print("Ingrese el año: ");
                     int anio = leer.nextInt();
                     Date fechaEspecifica = new Date();
-                    fechaEspecifica.setYear(anio-1900);
-                    fechaEspecifica.setMonth(mes-1);
+                    fechaEspecifica.setYear(anio - 1900);
+                    fechaEspecifica.setMonth(mes - 1);
                     fechaEspecifica.setDate(dia);
                     for (Prestamo p : ps.buscarPrestamosPorFecha(fechaEspecifica)) {
                         System.out.println(p);
@@ -180,6 +184,213 @@ public class MenuPrestamo {
                     break;
             }
         } while (opcPres != 0);
+    }
+
+    private Prestamo buscarPrestamoAModificar() throws Exception {
+        int opcPres;
+        Prestamo prestamo = null;
+        System.out.println("Seleccione la opcion para buscar el prestamo que desea modificar:"
+                + "\n1 - Buscar prestamo por ID"
+                + "\n2 - Buscar prestamo por Cliente");
+        opcPres = leer.nextByte();
+        switch (opcPres) {
+            case 1:
+                System.out.print("Ingrese el id del prestamo: ");
+                Long id = leer.nextLong();
+                prestamo = ps.buscarPrestamoPorID(id);
+                break;
+            case 2:
+                int opcM;
+                Cliente cl = null;
+                System.out.println("Seleccione la opcion que desee:"
+                        + "\n1- Buscar cliente por dni"
+                        + "\n2- Buscar cliente por id");
+                opcM = leer.nextByte();
+                switch (opcM) {
+                    case 1:
+                    try {
+                        System.out.print("Ingrese el dni del cliente que desea buscar: ");
+                        Long dni = leer.nextLong();
+                        if (!dni.toString().trim().isEmpty()) {
+                            cl = cs.buscarClientePorDNI(dni);
+                        } else {
+                            System.out.println("Se debe ingresar datos");
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.println("Debe ingresar un numero valido\n\n");
+                    }
+                    break;
+                    case 2:
+                    try {
+                        System.out.print("Ingrese el id del cliente que desea buscar: ");
+                        Long idCliente = leer.nextLong();
+                        if (!idCliente.toString().trim().isEmpty()) {
+                            cl = cs.buscarClientePorID(idCliente);
+                        } else {
+                            System.out.println("No ingreso datos");
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.println("Debe ingresar un numero valido\n\n");
+                    }
+                    break;
+                }
+                prestamo = ps.buscarPrestamoPorCliente(cl);
+                break;
+        }
+        return prestamo;
+    }
+
+    private void modificarPrestamo() throws Exception {
+        int opcModificar;
+        Prestamo p = buscarPrestamoAModificar();
+        System.out.println("Seleccione la modificacion a realizar:"
+                + "\n1- Modificar todo el prestamo"
+                + "\n2- Modificar fecha de prestamo"
+                + "\n3- Modificar fecha de devolucion"
+                + "\n4- Modificar libro"
+                + "\n5- Modificar cliente"
+                + "\n0- Volver al menu anterior");
+        opcModificar = leer.nextByte();
+        switch (opcModificar) {
+            case 1:
+                String confirmar;
+                System.out.println("Desea modificar fecha prestamo. S/N");
+                confirmar = leer.next();
+                if (confirmar.equalsIgnoreCase("s")) {
+                    Calendar calendar = Calendar.getInstance();
+                    System.out.print("Ingrese dia: ");
+                    int dia = leer.nextInt();
+                    System.out.print("Ingrese mes: ");
+                    int mes = leer.nextInt();
+                    System.out.print("Ingrese año: ");
+                    int anio = leer.nextInt();
+                    calendar.set(anio, mes, dia);
+                    p.setFechaPrestamo(calendar.getTime());
+                }
+                System.out.println("Desea modificar fecha devolucion. S/N");
+                confirmar = leer.next();
+                if (confirmar.equalsIgnoreCase("s")) {
+                    Calendar calendar = Calendar.getInstance();
+                    System.out.print("Ingrese dia: ");
+                    int dia = leer.nextInt();
+                    System.out.print("Ingrese mes: ");
+                    int mes = leer.nextInt();
+                    System.out.print("Ingrese año: ");
+                    int anio = leer.nextInt();
+                    calendar.set(anio, mes, dia);
+                    p.setFechaDevolucion(calendar.getTime());
+                }
+                System.out.println("Desea modificar libro. S/N");
+                confirmar = leer.next();
+                if (confirmar.equalsIgnoreCase("s")) {
+                    Libro libro = null;
+                    System.out.println("Ingresar nuevo libro por:\n1- ID.\n2- ISBN.\n3- Titulo.");
+                    int opcL = leer.nextByte();
+                    switch (opcL) {
+                        case 1:
+                            System.out.println("Ingrese el ID del libro:");
+                            Long id = leer.nextLong();
+                            libro = ls.buscarLibroPorID(id);
+                            break;
+                        case 2:
+                            System.out.println("Ingrese el ISBN del libro:");
+                            String isbn = leer.next();
+                            libro = ls.buscarLibroPorISBN(isbn);
+                            break;
+                        case 3:
+                            System.out.println("Ingrese el titulo del libro:");
+                            String titulo = leer.next();
+                            libro = ls.buscarLibroPorTitulo(titulo);
+                            break;
+                    }
+                    p.setLibro(libro);
+                }
+                System.out.println("Desea modificar cliente S/N");
+                confirmar = leer.next();
+                if (confirmar.equalsIgnoreCase("s")) {
+                    Cliente cliente = null;
+                    System.out.println("\nIngresar nuevo Cliente por:\n1- ID\n2- DNI");
+                    int opcC = leer.nextByte();
+                    switch (opcC) {
+                        case 1:
+                            System.out.println("Ingrese el ID del cliente:");
+                            Long idCliente = leer.nextLong();
+                            cliente = cs.buscarClientePorID(idCliente);
+                            break;
+                        case 2:
+                            System.out.println("Ingrese el DNI del cliente:");
+                            Long dniCliente = leer.nextLong();
+                            cliente = cs.buscarClientePorDNI(dniCliente);
+                            break;
+                    }
+                    p.setCliente(cliente);
+                }
+                break;
+            case 2:
+                Calendar calendar = Calendar.getInstance();
+                System.out.print("Ingrese dia: ");
+                int dia = leer.nextInt();
+                System.out.print("Ingrese mes: ");
+                int mes = leer.nextInt();
+                System.out.print("Ingrese año: ");
+                int anio = leer.nextInt();
+                calendar.set(anio, mes, dia);
+                p.setFechaPrestamo(calendar.getTime());
+                break;
+            case 3:
+                Calendar calendarFD = Calendar.getInstance();
+                System.out.print("Ingrese dia: ");
+                int diaFD = leer.nextInt();
+                System.out.print("Ingrese mes: ");
+                int mesFD = leer.nextInt();
+                System.out.print("Ingrese año: ");
+                int anioFD = leer.nextInt();
+                calendarFD.set(anioFD, mesFD, diaFD);
+                p.setFechaDevolucion(calendarFD.getTime());
+                break;
+            case 4:
+                Libro libro = null;
+                System.out.println("Ingresar nuevo libro por:\n1- ID.\n2- ISBN.\n3- Titulo.");
+                int opcL = leer.nextByte();
+                switch (opcL) {
+                    case 1:
+                        System.out.println("Ingrese el ID del libro:");
+                        Long id = leer.nextLong();
+                        libro = ls.buscarLibroPorID(id);
+                        break;
+                    case 2:
+                        System.out.println("Ingrese el ISBN del libro:");
+                        String isbn = leer.next();
+                        libro = ls.buscarLibroPorISBN(isbn);
+                        break;
+                    case 3:
+                        System.out.println("Ingrese el titulo del libro:");
+                        String titulo = leer.next();
+                        libro = ls.buscarLibroPorTitulo(titulo);
+                        break;
+                }
+                p.setLibro(libro);
+                break;
+            case 5:
+                Cliente cliente = null;
+                System.out.println("\nIngresar nuevo Cliente por:\n1- ID\n2- DNI");
+                int opcC = leer.nextByte();
+                switch (opcC) {
+                    case 1:
+                        System.out.println("Ingrese el ID del cliente:");
+                        Long idCliente = leer.nextLong();
+                        cliente = cs.buscarClientePorID(idCliente);
+                        break;
+                    case 2:
+                        System.out.println("Ingrese el DNI del cliente:");
+                        Long dniCliente = leer.nextLong();
+                        cliente = cs.buscarClientePorDNI(dniCliente);
+                        break;
+                }
+                p.setCliente(cliente);
+                break;
+        }
+        ps.modificarPrestamo(p);
     }
 
 }
